@@ -1,0 +1,39 @@
+﻿<Window x:Class="ProgettoApp.TrayTask"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProgettoApp"
+        mc:Ignorable="d"
+        Title="Window1" 
+        Height="157.059" 
+        Width="308.824" 
+        WindowStyle="None" 
+        Opacity="0.9" 
+        AllowsTransparency="True" 
+        ShowInTaskbar="False"
+        Background="#333333" Visibility="Hidden"
+        >
+    <Grid Margin="0,0,0,-1">
+
+        <TextBlock x:Name="Imp_Cond" Margin="26,26,24,0"
+            VerticalAlignment="Top"
+            FontWeight="Bold"
+            TextWrapping="Wrap"
+            Text="Impostazioni di Condivisione" 
+            TextDecorations="Underline" 
+            Foreground="#939393"/>
+        <TextBlock x:Name="Status_Text" 
+            HorizontalAlignment="Left" 
+            Margin="26,65,0,0" 
+            Padding="5" 
+            TextWrapping="Wrap" 
+            Text="Stato:&#x0d;&#x0a;Online" 
+            VerticalAlignment="Top" 
+            Height="83" 
+            Width="93" 
+            Background="#256BB1" 
+            Foreground="White" />
+
+    </Grid>
+</Window>

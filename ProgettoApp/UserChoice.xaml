@@ -1,0 +1,106 @@
+﻿<Window x:Class="ProgettoApp.UserChoice"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProgettoApp"
+        mc:Ignorable="d"
+        Title="UserChoice" Height="315.361" Width="708.434"
+        MaxWidth="708.434"
+        MinHeight="320">
+    <Window.Resources>
+        <ControlTemplate x:Key="CustomChkBox" TargetType="CheckBox">
+            <Grid>
+                <Ellipse x:Name="checkButton" StrokeThickness="5" Height="100" Width="100" Margin="10,10,10,10" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="UniformToFill">
+                    <Ellipse.Fill>
+                        <ImageBrush
+                                    x:Name="image1" 
+                                    Stretch="UniformToFill" 
+                                    ImageSource="{Binding Image}"
+                                 />
+                    </Ellipse.Fill>
+                </Ellipse>
+                <TextBlock Text="{Binding Caption}" FontSize="18px" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Padding="0,110,0,0"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter TargetName="checkButton" Property="Stroke" Value="Blue"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="RoundedBlueButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" Background="#256BB1" BorderThickness="1" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="RoundedWhiteButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15"  Background="White" BorderBrush="Gray" BorderThickness="2" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid  Grid.Row="0" HorizontalAlignment="Left" Margin="0,0,0,50"  Width="700" Grid.RowSpan="2" VerticalAlignment="Top">
+            <ListView x:Name="listView" Background="WhiteSmoke" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,0,0,-231" >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Focusable" Value="false"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="5" HorizontalAlignment="Stretch"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                            <CheckBox Uid="{Binding HashButton}" Template="{StaticResource CustomChkBox}" Checked="User_Checked" Unchecked="User_Unchecked" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <Grid  Grid.Row="1" HorizontalAlignment="Right" MaxWidth="700" Margin="0,235,0,0" Grid.RowSpan="2">
+            <Button
+                Style="{StaticResource RoundedBlueButtonStyle}"
+                HorizontalAlignment="Right"
+                Name="Condividi"
+                Content="CONDIVIDI"
+                FontSize="14px"
+                Height="35"
+                Foreground="White"
+                FontWeight="DemiBold"
+                Margin="0,0,20,10" Width="110" Click="Condividi_Click">
+            </Button>
+            <Button
+                Style="{StaticResource RoundedWhiteButtonStyle}"
+                HorizontalAlignment="Right"
+                Name="Annulla"
+                Content="ANNULLA"
+                Height="35"
+                FontWeight="DemiBold"
+                Foreground="Gray"
+                FontSize="14px"
+                Margin="0,0,141,10" Width="110" Click="Annulla_Click">
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
